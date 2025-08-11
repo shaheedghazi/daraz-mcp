@@ -1,318 +1,151 @@
-# Daraz MCP Server - Robust Implementation
+# Daraz MCP Server - Clean & Fast
 
-A production-ready MCP (Model Context Protocol) server that enables LM Studio to search Daraz.pk products with automatic fallback methods, intelligent caching, and anti-bot protection.
+A streamlined Model Context Protocol (MCP) server for searching Daraz.pk products. Built using **documented Daraz API patterns** for maximum reliability and performance.
 
-## 🚀 Features
+## ✨ Features
 
-### Multi-Method Fetching
-- **Primary**: Fast JSON API endpoint (`?ajax=true`)
-- **Fallback**: Playwright browser automation when JSON fails
-- **Auto-switch**: Detects blocks/CAPTCHAs and switches methods automatically
+- **🎯 Simple & Clean**: Just 2 tools instead of 6 confusing ones
+- **📡 Official API Patterns**: Uses documented `mods.listItems` structure and `ajax=true` endpoints  
+- **💸 Smart Cheapest Search**: Auto-detects "cheapest" queries and searches extensively
+- **🚫 No Cache**: Always fresh results, no .db files created
+- **🔄 Multi-method**: JSON API primary, Playwright browser fallback
+- **🎨 Beautiful Output**: Human-readable results with clickable links
+- **⚡ Fast**: Optimized using officially documented endpoints
 
-### Anti-Bot Protection
-- Rotating User-Agent strings
-- Random delays between requests (0.8-2.0s)
-- Polite rate limiting with backoff
-- Browser automation for complex scenarios
+## 🛠️ Tools Available
 
-### Intelligent Caching
-- SQLite-based cache with 3-hour expiry (configurable)
-- Instant responses for repeated queries
-- Automatic cache cleanup for expired entries
+### 1. `search_daraz` - The Main Search Tool
+Smart search that handles everything automatically:
 
-### Robust Error Handling
-- Graceful degradation when methods fail
-- Comprehensive logging for debugging
-- Fallback parsing for different page layouts
+```python
+# Regular search
+search_daraz("wireless mouse")
 
-## 📁 Project Structure
+# Auto-detects cheapest requests  
+search_daraz("cheapest wireless mouse")  # Searches 15 pages, sorts by price
 
-```
-daraz mcp/
-├── server_robust.py      # Main robust MCP server
-├── server.py             # Simple version (backup)
-├── test_server.py        # Test suite
-├── mcp.json             # LM Studio configuration
-├── requirements.txt     # Dependencies
-├── daraz_cache.db       # SQLite cache (auto-created)
-└── README.md           # This file
+# Explicit cheapest mode
+search_daraz("mouse", cheapest=True)
+
+# Price filtering
+search_daraz("laptops", max_price=50000)
+
+# Category search (uses documented category endpoints)
+search_daraz("TV", category="televisions")
 ```
 
-## 🛠️ Installation
+**Features:**
+- Auto-detects "cheapest" in query and switches to extensive search mode
+- Searches 15 pages for cheapest queries vs 5 for regular
+- Sorts results by price for cheapest queries
+- Returns formatted, clickable results
 
-### Prerequisites
-- Python 3.10+
-- LM Studio installed
-- VS Code (optional but recommended)
-
-### Step 1: Clone and Setup
-
-```powershell
-# Create project directory
-mkdir "C:\Users\YourName\daraz-mcp"
-cd "C:\Users\YourName\daraz-mcp"
-
-# Create virtual environment
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-# Install dependencies
-python -m pip install --upgrade pip
-pip install "mcp[cli]" fastmcp requests playwright beautifulsoup4
-
-# Install browser for Playwright
-playwright install chromium
+### 2. `product_details` - Get Product Info
+```python
+product_details("https://www.daraz.pk/products/product-url")
 ```
 
-### Step 2: Copy Files
+## 📡 API Implementation
 
-Copy all the files from this project to your directory, or create them manually:
+This server uses **officially documented Daraz.pk endpoints**:
 
-- `server_robust.py` - Main server implementation
-- `mcp.json` - LM Studio configuration
-- `test_server.py` - Test suite
-
-### Step 3: Test Installation
-
-```powershell
-python test_server.py
+### Search Endpoint
+```
+GET https://www.daraz.pk/catalog/
+    ?ajax=true
+    &q=query
+    &page=1
+    &_keyori=ss
 ```
 
-You should see:
+### Category Endpoint  
 ```
-✅ All tests passed! Server is ready for LM Studio.
+GET https://www.daraz.pk/{category}/
+    ?ajax=true
+    &page=1
+    &q=search_within_category
 ```
 
-## 🔧 LM Studio Configuration
+**Response Structure:** `data.mods.listItems[]` contains product array
 
-### Option 1: Copy mcp.json (Recommended)
+## 🚀 Quick Setup
 
-1. Copy the `mcp.json` from this project
-2. Edit the paths to match your setup:
+1. **Install dependencies:**
+```bash
+pip install fastmcp requests beautifulsoup4 playwright
+```
 
+2. **Add to LM Studio `mcp.json`:**
 ```json
 {
   "mcpServers": {
     "daraz-search": {
-      "command": "C:\\Users\\YourName\\daraz-mcp\\.venv\\Scripts\\python.exe",
-      "args": [
-        "C:\\Users\\YourName\\daraz-mcp\\server_robust.py"
-      ]
+      "command": "C:\\path\\to\\python.exe",
+      "args": ["C:\\path\\to\\server_merged.py"]
     }
   }
 }
 ```
 
-### Option 2: Add to Existing mcp.json
+3. **Test in LM Studio:**
+   - "Find cheapest Nothing phone case"
+   - "Search for wireless mice under 2000 PKR" 
+   - "Show me gaming laptops"
 
-If you already have an `mcp.json`, add this entry to the `mcpServers` section:
+## 🎯 Improvements from Previous Version
 
-```json
-"daraz-search": {
-  "command": "C:\\Users\\YourName\\daraz-mcp\\.venv\\Scripts\\python.exe",
-  "args": [
-    "C:\\Users\\YourName\\daraz-mcp\\server_robust.py"
-  ]
-}
-```
+### Before (Confusing):
+❌ 6 different tools: `search_daraz`, `search_daraz_structured`, `search_daraz_formatted`, `search_cheapest_daraz`, `search_most_expensive_daraz`, `product_details`
+❌ Cache causing stale results  
+❌ AI couldn't decide which tool to use
 
-### Step 4: Configure LM Studio
+### After (Clean):
+✅ 2 simple tools: `search_daraz` (smart), `product_details`
+✅ No cache - always fresh results
+✅ Auto-detection of user intent
+✅ Uses documented API patterns
 
-1. Open LM Studio
-2. Go to **Program → Install → Edit mcp.json**
-3. Paste your configuration
-4. Save and restart LM Studio
+## 📊 Search Behavior
 
-## 🎯 Usage in LM Studio
+| Query Type | Pages Searched | Results | Sorting |
+|------------|---------------|---------|---------|
+| Regular search | 5 pages | Up to 10 | As found |
+| "Cheapest" query | 15 pages | 1 item | Price (lowest first) |
+| With `cheapest=True` | 15 pages | 1 item | Price (lowest first) |
+| With `max_price` | 5 pages | Filtered | As found |
 
-### Basic Searches
+## 🔧 No Cache = Always Fresh
 
-Ask your AI assistant natural questions like:
+- ✅ No `.db` files created
+- ✅ Every search hits Daraz API fresh
+- ✅ Latest prices and stock status
+- ✅ No stale cached results
 
-```
-"Find wireless mice under 2000 PKR on Daraz"
-"Show me the cheapest laptops available on Daraz"
-"Search for smartphone cases with good ratings"
-```
+## 🛡️ Anti-Bot Protection
 
-### Advanced Queries
+- User-Agent rotation (5 different browsers)
+- Random delays between requests (1.0-2.5s)
+- Proper headers and referrers
+- Graceful fallback to browser automation
 
-```
-"Compare the top 5 gaming headsets on Daraz under 5000 PKR"
-"Find DSLR cameras and show me detailed specs for the best ones"
-"What are the most popular fitness trackers under 15000 PKR?"
-```
+## 📖 Usage Examples
 
-## 🔧 Available Tools
+### For Users in LM Studio:
+- *"Find me the cheapest Nothing phone 1 case"*
+- *"Search for wireless mice under 1500 PKR"*
+- *"What are some good gaming laptops?"*
+- *"Show me TVs in the television category"*
 
-### `search_daraz(query, max_price=None, max_results=10, page_limit=5)`
-
-Main search function with these parameters:
-
-- **query** (required): Search term (e.g., "wireless mouse", "smartphone 128GB")
-- **max_price** (optional): Maximum price filter in PKR
-- **max_results** (optional): Maximum number of results (default: 10)
-- **page_limit** (optional): Maximum pages to search (default: 5)
-
-**Returns**: List of products with:
-- `name`: Product title
-- `price`: Price in PKR (float) or null
-- `in_stock`: Stock status
-- `url`: Direct product link
-- `method`: Which method was used ("json" or "browser")
-
-### `product_details(url)`
-
-Get detailed information about a specific product:
-
-- **url** (required): Full Daraz product URL
-
-**Returns**: Dictionary with:
-- `title`: Full product title
-- `price`: Current price
-- `rating`: User rating
-- `seller`: Seller information
-- `specifications`: List of key features
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**1. "Server not starting"**
-```powershell
-# Check if Python path is correct
-.\.venv\Scripts\python.exe --version
-
-# Test server manually
-.\.venv\Scripts\python.exe server_robust.py
-```
-
-**2. "No results found"**
-- Daraz may be blocking requests
-- Try different search terms
-- Check if the site is accessible from your location
-- The browser fallback should activate automatically
-
-**3. "Permission errors"**
-```powershell
-# If PowerShell blocks scripts:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-```
-
-**4. "Module not found errors"**
-```powershell
-# Reinstall dependencies
-pip install --force-reinstall "mcp[cli]" fastmcp requests playwright beautifulsoup4
-playwright install chromium
-```
-
-### Debug Mode
-
-For verbose logging, modify `server_robust.py`:
-
+### For Developers:
 ```python
-# Change this line:
-logging.basicConfig(level=logging.INFO)
-# To:
-logging.basicConfig(level=logging.DEBUG)
+# The AI will automatically choose the right parameters
+search_daraz("cheapest phone cases")  # cheapest=True, max_results=1
+search_daraz("phone cases")           # regular search, max_results=10
+search_daraz("cases", max_price=500)  # price filtering
 ```
 
-### Cache Issues
+## 🎉 Ready to Use
 
-Clear the cache if you're getting stale results:
+This server is production-ready and uses officially documented Daraz.pk API patterns for maximum reliability. No seller account required - works with public endpoints only.
 
-```powershell
-del daraz_cache.db
-```
-
-## ⚖️ Legal and Ethical Usage
-
-### Important Notes
-
-- **Respect robots.txt**: Check Daraz's robots.txt file
-- **Rate limiting**: Built-in delays prevent server overload
-- **Personal use**: Intended for personal shopping assistance
-- **Terms of Service**: Ensure compliance with Daraz's ToS
-
-### Responsible Usage
-
-- Don't make excessive requests
-- Use caching to minimize server load
-- Respect the website's resources
-- Consider using official APIs when available
-
-## 🔧 Advanced Configuration
-
-### Cache Settings
-
-Modify cache duration in `server_robust.py`:
-
-```python
-# Change cache expiry (in hours)
-scraper = DarazScraper(cache_expiry_hours=6)  # 6 hours instead of 3
-```
-
-### Request Delays
-
-Adjust delays for your needs:
-
-```python
-# In search_with_fallback method, change:
-delay = random.uniform(1.0, 2.0)  # 1-2 seconds
-# To:
-delay = random.uniform(2.0, 4.0)  # 2-4 seconds for slower requests
-```
-
-### User Agent Rotation
-
-Add more user agents in the `__init__` method:
-
-```python
-self.user_agents = [
-    # ... existing agents ...
-    "Your custom user agent string here"
-]
-```
-
-## 📊 Performance
-
-### Typical Response Times
-
-- **Cache hit**: < 50ms
-- **JSON method**: 1-3 seconds
-- **Browser fallback**: 5-10 seconds
-- **Product details**: 2-5 seconds
-
-### Resource Usage
-
-- **Memory**: ~50-100MB for JSON, ~200-300MB with browser
-- **Storage**: Cache grows ~1MB per 1000 searches
-- **Network**: ~1-5KB per JSON request, ~500KB-2MB per browser request
-
-## 🤝 Contributing
-
-Want to improve the server? Here are some ideas:
-
-1. **Add more e-commerce sites** (Amazon.pk, OLX, etc.)
-2. **Implement price tracking** over time
-3. **Add image extraction** for products
-4. **Create a web dashboard** for cache management
-5. **Add proxy support** for high-volume usage
-
-## 📝 Changelog
-
-### v1.0 (Current)
-- Multi-method fetching (JSON + Browser)
-- SQLite caching with expiry
-- Anti-bot protection
-- Product details extraction
-- Comprehensive error handling
-- Full LM Studio integration
-
-## 📄 License
-
-This project is for educational and personal use. Respect the terms of service of all websites you interact with.
-
----
-
-**Built with ❤️ for the LM Studio and MCP community**
+**Start LM Studio, add the MCP server, and start shopping! 🛍️**

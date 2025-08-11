@@ -3,7 +3,7 @@
     "daraz-search": {
       "command": "C:\\Users\\ramesh\\Desktop\\daraz mcp\\.venv\\Scripts\\python.exe",
       "args": [
-        "C:\\Users\\ramesh\\Desktop\\daraz mcp\\server_robust.py"
+        "C:\\Users\\ramesh\\Desktop\\daraz mcp\\server_merged.py"
       ]
     }
   }

@@ -1,0 +1,164 @@
+2025-08-11 23:13:48,844 - server_robust - INFO - Trying JSON method for query: biruiqu nothing phone 1 case, page: 1
+2025-08-11 23:13:49,400 - server_robust - INFO - JSON method found 4 items
+2025-08-11 23:14:55,814 - server_robust - INFO - Searching page 1 for query: biruiqu nothing phone 1 case
+2025-08-11 23:14:55,815 - server_robust - INFO - Trying JSON method for query: biruiqu nothing phone 1 case, page: 1
+2025-08-11 23:14:56,425 - server_robust - INFO - JSON method found 4 items
+2025-08-11 23:14:56,428 - server_robust - INFO - Cached results for query: biruiqu nothing phone 1 case, page: 1
+2025-08-11 23:14:56,428 - server_robust - INFO - Waiting 2.0s before next page
+2025-08-11 23:14:58,425 - server_robust - INFO - Found 1 total results for query: biruiqu nothing phone 1 case
+2025-08-11 23:15:58,646 - server_robust - INFO - Searching page 1 for query: nothing phone 1 case
+2025-08-11 23:15:58,646 - server_robust - INFO - Trying JSON method for query: nothing phone 1 case, page: 1
+2025-08-11 23:15:59,357 - server_robust - INFO - JSON method found 40 items
+2025-08-11 23:15:59,362 - server_robust - INFO - Cached results for query: nothing phone 1 case, page: 1
+2025-08-11 23:15:59,362 - server_robust - INFO - Waiting 1.4s before next page
+2025-08-11 23:16:00,773 - server_robust - INFO - Found 3 total results for query: nothing phone 1 case
+2025-08-11 23:16:22,814 - server_robust - INFO - Searching page 1 for query: wireless mouse
+2025-08-11 23:16:22,814 - server_robust - INFO - Trying JSON method for query: wireless mouse, page: 1
+2025-08-11 23:16:23,588 - server_robust - INFO - JSON method found 40 items
+2025-08-11 23:16:23,591 - server_robust - INFO - Cached results for query: wireless mouse, page: 1
+2025-08-11 23:16:23,591 - server_robust - INFO - Waiting 1.3s before next page
+2025-08-11 23:16:24,868 - server_robust - INFO - Found 1 total results for query: wireless mouse
+2025-08-11 23:16:24,868 - server_robust - INFO - Searching page 1 for query: wireless mouse
+2025-08-11 23:16:24,868 - server_robust - INFO - Cache hit for query: wireless mouse, page: 1
+2025-08-11 23:16:24,869 - server_robust - INFO - Waiting 1.6s before next page
+2025-08-11 23:16:26,444 - server_robust - INFO - Found 1 total results for query: wireless mouse
+2025-08-11 23:21:46,266 - server_robust - INFO - Searching page 1 for query: nothing phone 1 case
+2025-08-11 23:21:46,266 - server_robust - INFO - Cache hit for query: nothing phone 1 case, page: 1
+2025-08-11 23:21:46,266 - server_robust - INFO - Waiting 1.5s before next page
+2025-08-11 23:21:47,775 - server_robust - INFO - Found 6 total results for query: nothing phone 1 case
+2025-08-11 23:24:38,801 - server_robust - INFO - Searching page 1 for query: nothing phone 1 case
+2025-08-11 23:24:38,802 - server_robust - INFO - Cache hit for query: nothing phone 1 case, page: 1
+2025-08-11 23:24:38,802 - server_robust - INFO - Waiting 1.1s before next page
+2025-08-11 23:24:39,905 - server_robust - INFO - Found 3 total results for query: nothing phone 1 case
+2025-08-11 23:29:20,221 - server_robust - INFO - Searching page 1 for query: nothing phone 1 case
+2025-08-11 23:29:20,221 - server_robust - INFO - Cache hit for query: nothing phone 1 case, page: 1
+2025-08-11 23:29:20,222 - server_robust - INFO - Waiting 1.6s before next page
+2025-08-11 23:29:21,793 - server_robust - INFO - Found 20 total results for query: nothing phone 1 case
+2025-08-11 23:34:12,283 - server_robust - INFO - Searching page 1 for query: nothing phone 1 case
+2025-08-11 23:34:12,283 - server_robust - INFO - Cache hit for query: nothing phone 1 case, page: 1
+2025-08-11 23:34:12,283 - server_robust - INFO - Waiting 1.0s before next page
+2025-08-11 23:34:13,291 - server_robust - INFO - Found 4 total results for query: nothing phone 1 case
+2025-08-11 23:35:58,840 - server_robust - INFO - Searching page 1 for query: nothing phone 1 case
+2025-08-11 23:35:58,840 - server_robust - INFO - Trying JSON method for query: nothing phone 1 case, page: 1
+2025-08-11 23:35:59,529 - server_robust - INFO - JSON method found 40 items
+2025-08-11 23:35:59,533 - server_robust - INFO - Cached results for query: nothing phone 1 case, page: 1
+2025-08-11 23:35:59,533 - server_robust - INFO - Waiting 2.0s before next page
+2025-08-11 23:36:01,525 - server_robust - INFO - Found 10 total results for query: nothing phone 1 case
+2025-08-11 23:42:27,747 - server_robust - INFO - Searching page 1 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:42:27,747 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:42:28,851 - server_robust - INFO - JSON method found 2 items
+2025-08-11 23:42:28,854 - server_robust - INFO - Cached results for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:42:28,854 - server_robust - INFO - Waiting 2.0s before next page
+2025-08-11 23:42:30,824 - server_robust - INFO - Searching page 2 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:42:30,824 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:42:31,435 - server_robust - INFO - No items found in JSON response
+2025-08-11 23:42:31,436 - server_robust - INFO - JSON method failed, trying browser fallback
+2025-08-11 23:42:31,436 - server_robust - INFO - Trying browser method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:42:43,432 - server_robust - WARNING - Product selector not found, trying alternative selectors
+2025-08-11 23:42:43,561 - server_robust - INFO - Browser method found 0 items
+2025-08-11 23:42:43,561 - server_robust - INFO - No more results found on page 2
+2025-08-11 23:42:43,561 - server_robust - INFO - Found 2 total results for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:46:09,301 - server_robust - INFO - Cache system DISABLED - no .db files will be created
+2025-08-11 23:46:09,307 - server_robust - INFO - Searching page 1 for query: nothing phone 1 case
+2025-08-11 23:46:09,307 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: nothing phone 1 case, page: 1
+2025-08-11 23:46:09,307 - server_robust - INFO - Trying JSON method for query: nothing phone 1 case, page: 1
+2025-08-11 23:46:10,074 - server_robust - INFO - JSON method found 40 items
+2025-08-11 23:46:10,075 - server_robust - INFO - Cache DISABLED - skipping cache for query: nothing phone 1 case, page: 1
+2025-08-11 23:46:10,075 - server_robust - INFO - Waiting 1.2s before next page
+2025-08-11 23:46:11,272 - server_robust - INFO - Found 10 total results for query: nothing phone 1 case
+2025-08-11 23:46:44,310 - __main__ - INFO - Cache system DISABLED - no .db files will be created
+2025-08-11 23:47:40,984 - server_robust - INFO - Cache system DISABLED - no .db files will be created
+2025-08-11 23:47:40,991 - server_robust - INFO - Searching page 1 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:47:40,991 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:47:40,991 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:47:41,637 - server_robust - INFO - JSON method found 2 items
+2025-08-11 23:47:41,637 - server_robust - INFO - Cache DISABLED - skipping cache for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:47:41,637 - server_robust - INFO - Waiting 1.2s before next page
+2025-08-11 23:47:42,848 - server_robust - INFO - Searching page 2 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:47:42,848 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:47:42,848 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:47:43,365 - server_robust - INFO - No items found in JSON response
+2025-08-11 23:47:43,367 - server_robust - INFO - JSON method failed, trying browser fallback
+2025-08-11 23:47:43,367 - server_robust - INFO - Trying browser method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:47:46,443 - server_robust - INFO - Found 2 products with selector: [data-qa-locator="product-item"]
+2025-08-11 23:47:46,444 - server_robust - INFO - Browser method found 2 items
+2025-08-11 23:47:46,444 - server_robust - INFO - Cache DISABLED - skipping cache for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:47:46,445 - server_robust - INFO - Waiting 2.0s before next page
+2025-08-11 23:47:48,439 - server_robust - INFO - Searching page 3 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:47:48,439 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 3
+2025-08-11 23:47:48,439 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 3
+2025-08-11 23:47:49,014 - server_robust - INFO - No items found in JSON response
+2025-08-11 23:47:49,014 - server_robust - INFO - JSON method failed, trying browser fallback
+2025-08-11 23:47:49,014 - server_robust - INFO - Trying browser method for query: Express Ultra 1kg detergent washing powder, page: 3
+2025-08-11 23:48:00,373 - server_robust - WARNING - Product selector not found, trying alternative selectors
+2025-08-11 23:48:00,508 - server_robust - INFO - Browser method found 0 items
+2025-08-11 23:48:00,508 - server_robust - INFO - No more results found on page 3
+2025-08-11 23:48:00,508 - server_robust - INFO - Found 4 total results for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:10,275 - server_robust - INFO - Cache system DISABLED - no .db files will be created
+2025-08-11 23:48:10,281 - server_robust - INFO - Searching page 1 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:10,281 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:10,282 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:10,905 - server_robust - INFO - JSON method found 2 items
+2025-08-11 23:48:10,906 - server_robust - INFO - Cache DISABLED - skipping cache for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:10,906 - server_robust - INFO - Waiting 1.4s before next page
+2025-08-11 23:48:12,285 - server_robust - INFO - Searching page 2 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:12,285 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:12,285 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:12,800 - server_robust - INFO - No items found in JSON response
+2025-08-11 23:48:12,802 - server_robust - INFO - JSON method failed, trying browser fallback
+2025-08-11 23:48:12,802 - server_robust - INFO - Trying browser method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:24,224 - server_robust - WARNING - Product selector not found, trying alternative selectors
+2025-08-11 23:48:24,363 - server_robust - INFO - Browser method found 0 items
+2025-08-11 23:48:24,363 - server_robust - INFO - No more results found on page 2
+2025-08-11 23:48:24,363 - server_robust - INFO - Found 2 total results for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:34,618 - server_robust - INFO - Cache system DISABLED - no .db files will be created
+2025-08-11 23:48:34,624 - server_robust - INFO - Searching page 1 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:34,624 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:34,625 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:35,264 - server_robust - INFO - JSON method found 2 items
+2025-08-11 23:48:35,265 - server_robust - INFO - Cache DISABLED - skipping cache for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:35,265 - server_robust - INFO - Waiting 1.7s before next page
+2025-08-11 23:48:36,969 - server_robust - INFO - Searching page 2 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:36,970 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:36,970 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:37,455 - server_robust - INFO - No items found in JSON response
+2025-08-11 23:48:37,457 - server_robust - INFO - JSON method failed, trying browser fallback
+2025-08-11 23:48:37,457 - server_robust - INFO - Trying browser method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:48,911 - server_robust - WARNING - Product selector not found, trying alternative selectors
+2025-08-11 23:48:49,042 - server_robust - INFO - Browser method found 0 items
+2025-08-11 23:48:49,042 - server_robust - INFO - No more results found on page 2
+2025-08-11 23:48:49,042 - server_robust - INFO - Found 2 total results for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:49,043 - server_robust - INFO - Searching page 1 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:49,043 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:49,043 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:49,617 - server_robust - INFO - JSON method found 2 items
+2025-08-11 23:48:49,618 - server_robust - INFO - Cache DISABLED - skipping cache for query: Express Ultra 1kg detergent washing powder, page: 1
+2025-08-11 23:48:49,618 - server_robust - INFO - Waiting 2.0s before next page
+2025-08-11 23:48:51,615 - server_robust - INFO - Searching page 2 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:51,616 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:51,617 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:52,127 - server_robust - INFO - No items found in JSON response
+2025-08-11 23:48:52,128 - server_robust - INFO - JSON method failed, trying browser fallback
+2025-08-11 23:48:52,128 - server_robust - INFO - Trying browser method for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:54,534 - server_robust - INFO - Found 2 products with selector: [data-qa-locator="product-item"]
+2025-08-11 23:48:54,535 - server_robust - INFO - Browser method found 2 items
+2025-08-11 23:48:54,535 - server_robust - INFO - Cache DISABLED - skipping cache for query: Express Ultra 1kg detergent washing powder, page: 2
+2025-08-11 23:48:54,535 - server_robust - INFO - Waiting 1.9s before next page
+2025-08-11 23:48:56,419 - server_robust - INFO - Searching page 3 for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:48:56,420 - server_robust - INFO - Cache DISABLED - forcing fresh search for query: Express Ultra 1kg detergent washing powder, page: 3
+2025-08-11 23:48:56,420 - server_robust - INFO - Trying JSON method for query: Express Ultra 1kg detergent washing powder, page: 3
+2025-08-11 23:48:57,006 - server_robust - INFO - No items found in JSON response
+2025-08-11 23:48:57,007 - server_robust - INFO - JSON method failed, trying browser fallback
+2025-08-11 23:48:57,007 - server_robust - INFO - Trying browser method for query: Express Ultra 1kg detergent washing powder, page: 3
+2025-08-11 23:49:08,419 - server_robust - WARNING - Product selector not found, trying alternative selectors
+2025-08-11 23:49:08,554 - server_robust - INFO - Browser method found 0 items
+2025-08-11 23:49:08,554 - server_robust - INFO - No more results found on page 3
+2025-08-11 23:49:08,554 - server_robust - INFO - Found 4 total results for query: Express Ultra 1kg detergent washing powder
+2025-08-11 23:49:25,993 - __main__ - INFO - Cache system DISABLED - no .db files will be created
+2025-08-11 23:51:46,858 - server_merged - INFO - Cache system DISABLED - always fresh searches
+2025-08-11 23:51:54,942 - __main__ - INFO - Cache system DISABLED - always fresh searches
+2025-08-11 23:51:58,890 - server_merged - INFO - Cache system DISABLED - always fresh searches
+2025-08-12 00:22:28,583 - server_merged - INFO - Cache system DISABLED - always fresh searches
+2025-08-12 00:23:34,715 - __main__ - INFO - Cache system DISABLED - always fresh searches
+2025-08-12 00:38:07,138 - __main__ - INFO - Cache system DISABLED - always fresh searches
+2025-08-12 00:39:48,535 - __main__ - INFO - Cache system DISABLED - always fresh searches
