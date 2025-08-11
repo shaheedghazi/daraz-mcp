@@ -13,8 +13,15 @@ from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 import logging
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+# Configure logging with more detail and UTF-8 encoding
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('daraz_mcp_debug.log', encoding='utf-8')
+    ]
+)
 logger = logging.getLogger(__name__)
 
 mcp = FastMCP("Daraz Search Robust")
@@ -85,17 +92,44 @@ class DarazScraper:
         logger.info(f"Cached results for query: {query}, page: {page}")
         
     def _parse_price(self, price_str: str) -> Optional[float]:
-        """Parse price string to float"""
+        """Parse price string to float with comprehensive debugging"""
+        logger.debug(f"Parsing price string: '{price_str}'")
+        
         if not price_str:
+            logger.debug("Price string is empty or None")
             return None
-        # Find first number-like substring (e.g. "Rs. 1,234" -> "1234")
-        m = re.search(r'[\d,]+(?:\.\d+)?', price_str.replace('Rs', '').replace('PKR', ''))
-        if not m:
-            return None
-        try:
-            return float(m.group(0).replace(',', ''))
-        except ValueError:
-            return None
+            
+        # Clean the price string more thoroughly
+        original_price = price_str
+        clean_price = price_str.strip()
+        
+        # Remove common currency symbols and text
+        clean_price = re.sub(r'Rs\.?|PKR|₨|rupees?|Rupees?', '', clean_price, flags=re.IGNORECASE)
+        clean_price = re.sub(r'[^\d,.-]', '', clean_price)  # Keep only digits, commas, dots, minus
+        
+        logger.debug(f"Cleaned price string: '{clean_price}'")
+        
+        # Multiple regex patterns to catch different formats (order matters!)
+        patterns = [
+            r'(\d{1,3}(?:,\d{3})+(?:\.\d{2})?)',  # 1,234.00 or 1,234 (comma-separated)
+            r'(\d+\.\d{2})',                      # 1234.00 (with decimals)
+            r'(\d{4,})',                          # 1234+ (4+ digits without commas)
+            r'(\d+)',                             # Any remaining digits
+        ]
+        
+        for pattern in patterns:
+            m = re.search(pattern, clean_price)
+            if m:
+                try:
+                    price_value = float(m.group(1).replace(',', ''))
+                    logger.debug(f"Successfully parsed price: {price_value} from '{original_price}'")
+                    return price_value
+                except ValueError as e:
+                    logger.debug(f"Failed to convert '{m.group(1)}' to float: {e}")
+                    continue
+        
+        logger.warning(f"Could not parse price from: '{original_price}' -> '{clean_price}'")
+        return None
             
     def get_random_headers(self) -> Dict[str, str]:
         """Get randomized headers to avoid detection"""
@@ -125,30 +159,94 @@ class DarazScraper:
                 
             # Try to parse as JSON
             data = r.json()
+            logger.debug(f"JSON response keys: {list(data.keys())}")
+            
             items = data.get("mods", {}).get("listItems", [])
+            if not items:
+                # Try alternative paths in JSON structure
+                alt_paths = [
+                    ("results",),
+                    ("data", "products"),
+                    ("products",),
+                    ("items",),
+                    ("mods", "products"),
+                    ("searchResult", "products")
+                ]
+                
+                for path in alt_paths:
+                    current = data
+                    for key in path:
+                        current = current.get(key, {})
+                        if not current:
+                            break
+                    if isinstance(current, list) and current:
+                        items = current
+                        logger.debug(f"Found items at path: {' -> '.join(path)}")
+                        break
+            
+            # Log first item structure for debugging
+            if items:
+                logger.debug(f"First item keys: {list(items[0].keys())}")
+                logger.debug(f"First item sample: {items[0]}")
             
             if not items:
                 logger.info("No items found in JSON response")
                 return []
                 
             results = []
-            for item in items:
-                name = item.get("name") or item.get("title") or ""
-                price = self._parse_price(item.get("priceShow") or item.get("price") or "")
-                url = item.get("itemUrl") or item.get("link") or ""
+            for i, item in enumerate(items):
+                logger.debug(f"Processing item {i+1}: {list(item.keys())}")
+                
+                # Try multiple fields for name
+                name = (item.get("name") or 
+                       item.get("title") or 
+                       item.get("productName") or 
+                       item.get("itemTitle") or "")
+                
+                # Try multiple fields for price
+                price_fields = ["priceShow", "price", "originalPrice", "currentPrice", "sellingPrice"]
+                price_raw = None
+                for field in price_fields:
+                    if field in item and item[field]:
+                        price_raw = str(item[field])
+                        logger.debug(f"Found price in field '{field}': {price_raw}")
+                        break
+                
+                if not price_raw:
+                    logger.debug(f"No price found in any field for item: {name}")
+                    logger.debug(f"Available fields: {list(item.keys())}")
+                
+                price = self._parse_price(price_raw) if price_raw else None
+                
+                # Try multiple fields for URL
+                url = (item.get("itemUrl") or 
+                      item.get("link") or 
+                      item.get("productUrl") or 
+                      item.get("url") or "")
                 
                 if url.startswith("//"):
                     url = "https:" + url
                 elif url.startswith("/"):
                     url = "https://www.daraz.pk" + url
-                    
-                results.append({
-                    "name": name,
-                    "price": price,
-                    "in_stock": item.get("inStock", ""),
-                    "url": url,
-                    "method": "json"
-                })
+                
+                # Try multiple fields for stock
+                stock = (item.get("inStock") or 
+                        item.get("stock") or 
+                        item.get("availability") or 
+                        item.get("stockStatus") or "")
+                
+                if name and url:  # Only add if we have basic info
+                    result = {
+                        "name": name,
+                        "price": price,
+                        "in_stock": str(stock),
+                        "url": url,
+                        "method": "json"
+                    }
+                    results.append(result)
+                    logger.debug(f"Added result: {name} - {price} PKR (raw: '{price_raw}')")
+                else:
+                    logger.debug(f"Skipped item due to missing name or URL: name='{name}', url='{url}'")
                 
             logger.info(f"JSON method found {len(results)} items")
             return results
